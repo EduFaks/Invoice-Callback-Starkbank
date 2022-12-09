@@ -1,10 +1,14 @@
 
 # Invoice Callback Starbank Challenge
 
-## Description
+## Descrição
 Desafio técnico para provar o conhecimento de programação em Python, webhooks, task scheduling e da API do banco [Starkbank](https://starkbank.com/).
-## Deployment
 
+## Fluxo
+- A cada 3 horas enviar de 8 a 12 invoices de pagamento para o workspace.
+- A receber o webhook, efetuar o pagamento para o destinatário.
+
+## Implementação
 Esse programa depende webhooks para rodar seu fluxo. Necessário rodar em uma máquina com portas abertas a internet ou rodar na nuvem.
 ## MIT License
 
