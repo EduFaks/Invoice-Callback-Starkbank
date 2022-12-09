@@ -20,12 +20,12 @@ projeto = starkbank.Project(environment=ambiente,
 starkbank.user = projeto
 app = Flask(__name__)
 
-# Scheduler que faz a funcao de gerar invoices rodar cada 3 horas
+# Scheduler para chamar gerador de invoice a cada 3 horas
 scheduler = APScheduler()
 scheduler.init_app(app)
 scheduler.start()
 
-# Funcao para transferir valor determinado para conta principal stark
+# Efetuar a transferencia de um valor determinado para conta principal stark
 def transferir(valor, nome):
     transferencia = starkbank.Transaction(
         amount=valor,
@@ -34,7 +34,7 @@ def transferir(valor, nome):
         external_id=str(randint(1000000, 100000000)))
     starkbank.transaction.create([transferencia])
 
-# Webhook para verificar e atualizar a cada invoice
+# Webhook para verificar e atualizar a transferencia a cada invoice
 @app.route('/hook', methods=['POST'])
 def hook():
     if request.method == 'POST':
@@ -48,13 +48,13 @@ def hook():
         print(valor)
         print(nome)
         print("---------------------------")
-        ### ##### ###
+        #############
 
-        if log['type'] == 'paid':
+        if log['type'] == 'credited':
             transferir(valor - 50, nome)
         return 'OK', 200
 
-# Executar funcao a cada 3 horas e enviar de 8 a 12 invoices
+# A cada 3 horas, enviar de 8 a 12 invoices
 @scheduler.task("interval", id='invoices', hours=3)
 def gerar_invoices():
     invoice_list = []
