@@ -1,7 +1,6 @@
-Flask==1.1.1
+Flask==2.1.0
 starkbank==2.14.1
 cpf_generator==2.1.4
 names==0.3.0
 Flask_APScheduler==1.12.2
-python-dotenv==0.19.2
 gunicorn
