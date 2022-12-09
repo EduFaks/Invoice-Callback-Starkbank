@@ -5,8 +5,8 @@
 Desafio técnico para provar o conhecimento de programação em Python, webhooks, task scheduling e da API do banco [Starkbank](https://starkbank.com/).
 
 ## Fluxo
-- A cada 3 horas enviar de 8 a 12 invoices de pagamento para o workspace.
-- A receber o webhook, efetuar o pagamento para o destinatário.
+1. A cada 3 horas enviar de 8 a 12 invoices de pagamento para o workspace.
+2. A receber o webhook, efetuar o pagamento para o destinatário.
 
 ## Implementação
 Esse programa depende webhooks para rodar seu fluxo. Necessário rodar em uma máquina com portas abertas a internet ou rodar na nuvem.
